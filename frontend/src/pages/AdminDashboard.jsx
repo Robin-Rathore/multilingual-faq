@@ -9,7 +9,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchFAQs = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/faqs');
+        const response = await axios.get('https://multilingual-faq-1.onrender.com/api/faqs');
         setFaqs(response.data);
       } catch (error) {
         console.error('Failed to fetch FAQs', error);
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/faqs/${id}`);
+      await axios.delete(`https://multilingual-faq-1.onrender.com/api/faqs/${id}`);
       setFaqs(faqs.filter(faq => faq._id !== id));
     } catch (error) {
       console.error('Delete failed', error);

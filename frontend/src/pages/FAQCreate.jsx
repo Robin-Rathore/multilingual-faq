@@ -29,7 +29,7 @@ const FAQCreate = () => {
   
     setIsSubmitting(true);
     try {
-      await axios.post('http://localhost:3000/api/faqs', faqData);
+      await axios.post('https://multilingual-faq-1.onrender.com/api/faqs', faqData);
       alert('FAQ Created Successfully!');
       setFAQ({ question: '', answer: '', language: 'en', tags: [] });
     } catch (error) {

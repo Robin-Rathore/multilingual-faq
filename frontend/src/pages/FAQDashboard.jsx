@@ -9,7 +9,7 @@ const FAQDashboard = () => {
   useEffect(() => {
     const fetchFAQs = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/faqs?lang=${language}`);
+        const response = await axios.get(`https://multilingual-faq-1.onrender.com/api/faqs?lang=${language}`);
         if (Array.isArray(response.data)) {
           setFaqs(response.data);
           setError(null); // Clear any previous errors
