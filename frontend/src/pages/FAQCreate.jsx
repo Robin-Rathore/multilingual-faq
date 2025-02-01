@@ -88,8 +88,9 @@ const FAQCreate = () => {
         </div>
         <button 
           type="submit" 
-          className="w-full bg-blue text-white py-2 rounded-md hover:bg-blue-700 transition"
-          disabled={isSubmitting} // Disable button while submitting
+          style={{background:"blue"}}
+          className="w-full !bg-blue text-white py-2 rounded-md hover:bg-blue-700 transition"
+          disabled={isSubmitting} 
         >
           {isSubmitting ? 'Creating FAQ...' : 'Create FAQ'}
         </button>
