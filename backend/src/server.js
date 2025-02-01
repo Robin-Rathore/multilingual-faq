@@ -8,11 +8,19 @@ const connectDatabase = require('../config/database');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// CORS Configuration
+const allowedOrigins = [
+  'https://multilingual-faq.netlify.app',
+  'https://multilingual-faq-1.onrender.com' 
+];
+
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production'
-    ? 'https://multilingual-faq-1.onrender.com'
-    : '*',  // Allow all origins in development
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
