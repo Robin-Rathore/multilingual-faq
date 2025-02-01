@@ -10,10 +10,15 @@ const PORT = process.env.PORT || 3000;
 
 // CORS Configuration
 const corsOptions = {
-    origin: 'http://localhost:5173' || 'https://multilingual-faq-1.onrender.com',
+  origin: process.env.NODE_ENV === 'production'
+    ? 'https://multilingual-faq-1.onrender.com'
+    : '*',  // Allow all origins in development
   methods: ['GET', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
 app.use(cors(corsOptions));
+
 
 // Middleware
 app.use(express.json());
