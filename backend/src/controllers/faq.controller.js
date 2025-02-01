@@ -37,6 +37,25 @@ const FAQController = {
       res.status(500).json({ error: 'Failed to fetch FAQs' });
     }
   },
+
+  async deleteFAQ(req, res) {
+    const { id } = req.params;
+  
+    // Validate the ID format
+    if (!/^[0-9a-fA-F]{24}$/.test(id)) {
+      return res.status(400).json({ error: 'Invalid FAQ ID' });
+    }
+  
+    try {
+      const deletedFAQ = await FAQ.findByIdAndDelete(id);
+      if (!deletedFAQ) {
+        return res.status(404).json({ error: 'FAQ not found' });
+      }
+      res.status(200).json({ message: 'FAQ deleted successfully' });
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
 };
 
 module.exports = FAQController;
